@@ -1,0 +1,167 @@
+
+<html>
+	<head>
+	<style type="text/css">
+	#mv{
+		margin-left:50px;
+	}
+	</style>
+	<script>
+	function r(){
+		document.getElementById("ui").innerHTML="";
+	}
+	function validateForm(){
+			var name=document.getElementById("name").value;
+			var age=document.getElementById("age").value;
+			var gender= document.getElementsByName("g");
+			var adress=document.getElementById("ad").value;
+			var y=document.getElementById("year").value;
+			var e = document.getElementById("state");
+			var strUser = e.options[e.selectedIndex].value;
+			var mob=document.getElementById("phone").value;
+			var email=document.getElementById("email").value;
+			var password=document.getElementById("password").value;
+			var rpassword=document.getElementById("rpassword").value;
+			
+			if(name=="")
+			{
+			alert("Name field empty");
+			return false;
+			}
+			else
+			{
+				for(i=0;i<name.length;i++)
+				if(!((name.charAt(i)>='a'&&name.charAt(i)<='z')||(name.charAt(i)>='A'&&name.charAt(i)<='Z')))
+				{
+					alert("enter apphabets only in name field");
+			   	 return false;
+				}
+			}
+			
+			if(age=="")
+			{
+				alert("Age field empty");
+				return false;
+			}
+			else
+			{
+				for(i=0;i<age.length;i++)
+				if(!((age.charAt(i)>='0'&&age.charAt(i)<='9')||(age=>1&&age<=100)))
+				{
+					alert("enter valid age");
+			   	 return false;
+				}
+			}
+   
+   
+   
+			if ( (gender[0].checked == false ) && ( gender[1].checked == false )&& ( gender[2].checked == false ) ) 
+			{
+				alert ( "Please choose your Gender: Male or Female or Other" ); 
+				return false;
+			}
+			var cal=2019-parseInt(y);
+			if(y==""){
+				alert("Year of birth field is empty");
+				return false;
+			}else if(!(cal==age)){
+				alert("year of birth given not valid");
+				return false;
+			}
+			
+			if(adress==""){
+				alert("Address field is empty");
+				return false;
+			}
+			
+			if(mob=="")
+			{
+			   	alert("Number field empty");
+			   	return false;
+		   	}
+		   	else
+		   	{
+		   		if(mob.length<10 ||mob.length>10){
+					alert("Number is not valid");
+					return false;
+				}
+				else
+				{
+			   	for(i=0;i<mob.length;i++)
+				    	if(!((mob.charAt(i)>=0&&mob.charAt(i)<=9)))
+				    	{
+				    		alert("number is not valid");
+				    		return false;
+				    	}
+			    	}
+		   	}
+		   	
+			
+			if(email=="")
+			{
+				alert("email field empty");
+				return false;
+			}
+			else{
+				var atpos=email.indexOf("@");
+				var dotpos=email.lastIndexOf(".");
+				if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+				{
+					alert("Not a valid e-mail address");
+					return false;
+				}
+			}
+			
+			document.getElementById("ui").innerHTML="UID :"+email;
+	
+			if(password=="")
+			{
+				alert("password field empty");
+				return false;
+			}else{
+				if(password.length<8){
+					alert("Min 8 letters in password");
+					return false;
+				}else{
+					for(i=0;i<password.length;i++)
+					 if(!((password.charAt(i)>='a'&&password.charAt(i)<='z')||(password.charAt(i)>='A'&&password.charAt(i)<='Z')||(password.charAt(i)>=0||password.charAt(i)<=9))){
+						alert("Password should contain atleast one number and special character");
+						return false;
+					}
+				}
+			}
+			
+			alert("Strong password");
+			if(!(password==rpassword)){
+				alert("Password not matching");
+				return false;
+			}
+		
+	}
+	</script>
+	</head>
+	<body>
+		<div id="mv">
+			<h4>Registration form</h4>
+			<form  name="UserReg" action="1.html" method="post"  onSubmit="return validateForm()">
+			<input type="text" id="name" placeholder="Enter your name"></br>
+			<input type="number" id="age" placeholder="Age"></br>
+			Gender <input type="radio" name="g" value="1">Male <input type="radio" name="g" value="2">Female <input type="radio" name="g" value="3">Other</br>
+			<input type="text" id="year" placeholder="Year of birth"></br>
+			Address  <textarea rows="6" cols="20" id="ad"></textarea><br/>
+			<input type="text" id="phone" placeholder="Mobile Number"></br>
+			State <select id="state">
+			  <option value="0">Karnataka</option>
+			  <option value="1">Kerala</option>
+			  <option value="2">AndraPradesh</option>
+			  <option value="3">Tamilnadu</option>
+			</select><br/>
+			<input type="email" id="email" placeholder="E-mail ID"></br>
+			<div id="ui"></div><br/>
+			<input type="password" id="password" placeholder="Enter your password"></br>
+			<input type="password" id="rpassword" placeholder="Conform Password"></br>
+			<input type="submit" value="Submit">
+			<input type="reset" value="Reset" onclick="r()">
+			</form>
+		</div>
+</body>
