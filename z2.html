@@ -1,0 +1,19 @@
+
+
+<html>
+<head>
+<script>
+    function change(){
+                    var src= document.getElementById("sourceTextField");
+                    var dest= document.getElementById("destinationTextField");
+                    dest.value=src.value;
+                }
+</script>
+</head>
+
+
+<body>
+    <input type="text" id="sourceTextField" onkeyup="change();"/>
+    <input type="text" id="destinationTextField" value=""/>
+</body>
+</html>

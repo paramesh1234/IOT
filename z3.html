@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+    <div>
+        <span>tb1:</span>
+        <input id="tb1" type="text" value="TextBox Value 1"/>
+    </div>
+    <div>
+        <span>tb2:</span>
+        <input id="tb2" type="text" value="TextBox Value 2"/>
+    </div>
+    <input type="button" onclick="exchange()" value="Exchange">
+    <script type="text/javascript">
+        function exchange(){
+            var tb1 = document.getElementById('tb1');
+            var tb2 = document.getElementById('tb2');
+            var condition = function(){
+                return true;
+            };
+
+            if(condition()){
+                var buf = tb1.value;
+                tb1.value = tb2.value;
+                tb2.value = buf;
+            }
+        }
+    </script>
+</body>
+</html>
